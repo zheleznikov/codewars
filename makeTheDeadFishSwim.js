@@ -1,13 +1,9 @@
 /* 
 https://www.codewars.com/kata/51e0007c1f9378fa810002a9
 
-Write a simple parser that will parse and run Deadfish.
-Deadfish has 4 commands, each 1 character long:
-i increments the value (initially 0)
-d decrements the value
-s squares the value
-o outputs the value into the return array
-Invalid characters should be ignored.
+Дано первоначальное значение, равное 0.
+На вход поступает строка, каждый символ которой предлагает либо увеличить первоначальное значение на 1, либо уменьшить на 1, либо возвести в квадрат либо передать в массив.
+Нужно вернуть массив со значениями.
 
 решение - https://www.youtube.com/watch?v=-xXBKf4_W_8
 */
