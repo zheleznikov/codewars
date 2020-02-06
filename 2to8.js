@@ -1,4 +1,3 @@
-<script>
   function binToOct(n) {
     let sumArr = [];
 
@@ -33,4 +32,4 @@
   }
 
   checkBinarytoOct('1101001') 
-</script>
+
