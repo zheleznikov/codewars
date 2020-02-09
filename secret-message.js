@@ -42,9 +42,9 @@ dictionary: string[];
             return "Unreadable message";
         }
 
-        inputData = inputData.filter(elem => elem !== undefined)
-        inputData = inputData.filter(elem => elem.geometry !== undefined)
-        inputData = inputData.filter(elem => elem.geometry.length > 0)
+        inputData = inputData.filter(elem => elem !== undefined);
+        inputData = inputData.filter(elem => elem.geometry !== undefined);
+        inputData = inputData.filter(elem => elem.geometry.length > 0);
 
         for (let i = 0; i < inputData.length; i++) {
             if (!inputDictionary.includes(inputData[i].text)) {
