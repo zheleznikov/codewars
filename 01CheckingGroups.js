@@ -1,35 +1,30 @@
 // https://www.codewars.com/kata/54b80308488cb6cd31000161
 
     function groupCheck(s) {
-        const brackets = s.split('');
-        const openArr = '({['.split('');
         let openCount = 0;
         let closeCount = 0;
+        let stack = [];
 
-        brackets.forEach(bracket => {
-            if (openArr.includes(bracket)) {
-                openCount++
+        s.split('').forEach(bracket => {
+            let l = stack.length - 1;
+
+            if (['(', '{', '['].includes(bracket)) {
+                stack.push(bracket);
+                openCount++;
+            } else if ((stack[l] === '[' && bracket === ']') || (stack[l] === '(' && bracket === ')') || (stack[l] === '{' && bracket === '}')) {
+                stack.pop();
+                closeCount++;
             } else {
-                closeCount++
+                closeCount++;
             }
         })
 
         if (openCount !== closeCount) {
             return false
         }
-
-        let stack = [];
-
-        for (let bracket of brackets) {
-            let l = stack.length - 1;
-            if (openArr.includes(bracket)) {
-                stack.push(bracket)
-            } else if ((stack[l] === '[' && bracket === ']') || (stack[l] === '(' && bracket === ')') || (stack[l] === '{' && bracket === '}')) {
-                stack.pop();
-            }
-        }
+        
         return stack.length === 0;
 
     }
 
- console.log(groupCheck("[{}{}())"));
+    console.log(groupCheck("[()]]"));
