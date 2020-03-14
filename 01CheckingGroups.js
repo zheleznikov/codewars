@@ -10,15 +10,17 @@
 
             if (['(', '{', '['].includes(bracket)) {
                 stack.push(bracket);
-                openCount++;
+                openCount++; // неидеальное условие ниже
             } else if ((stack[l] === '[' && bracket === ']') || (stack[l] === '(' && bracket === ')') || (stack[l] === '{' && bracket === '}')) {
                 stack.pop();
                 closeCount++;
             } else {
-                closeCount++;
+                closeCount++; // как обойтись без счетчиков
             }
         })
 
+        
+        // неидеальный return
         if (openCount !== closeCount) {
             return false
         }
