@@ -1,8 +1,23 @@
 //https://www.codewars.com/kata/52774a314c2333f0a7000688  
 // задача со скобками
-  
-  function validParentheses(parens) {
 
+  // решение через счетчик и reduce
+  function validParentheses(parens) {
+    return parens.split('').reduce((counter, bracket) => {
+      if (bracket === '(') {
+        counter++
+      } else if (bracket === ')') { 
+       counter--
+      } 
+      if (counter < 0) {
+        return false
+      }
+      return counter
+    }, 0) === 0; 
+  }
+
+  // решение через reduce и стек
+  function validParentheses(parens) {
     return parens.split('').reduce((stack, bracket) => {
       if (bracket === '(') { // если скобка - открывающая, то кладем ее в стек
         stack.push(bracket);
@@ -13,8 +28,42 @@
       }
       return stack
     }, []).length === 0; // возвращаем результат сравнения с 0
+  }
 
 
+// решение через счетчик
+  function validParentheses(parens) {
+   const brackets = parens.split('');
+   let valid = 0;
+      for (let i = 0; i < brackets.length; i++) {
+     if (brackets[i] === '(') {
+       valid++
+     } else if (brackets[i] === ')') {
+       valid--
+     }
+
+     if (valid < 0) {
+       return false
+     }
+   }
+
+   return valid === 0
+  }
+
+  // решение через стэк и цикл for
+  function validParentheses(parens) {
+    const brackets = parens.split('');
+    const stack = [];
+    for (let i = 0; i < brackets.length; i++) {
+      if (brackets[i] === '(') {
+        stack.push(brackets[i])
+      } else if (brackets[i] === ')' && stack[stack.length - 1] === '(') {
+        stack.pop();
+      } else {
+        stack.push(brackets[i])
+      }
+    }
+    return stack.length === 0
   }
 
   console.log(validParentheses("()"), true);
